@@ -1,0 +1,25 @@
+﻿using Sistema_chamados.Enums;
+using Sistema_chamados.Models;
+using System.ComponentModel.DataAnnotations;
+
+namespace Sistema_chamados.ViewModels
+{
+    public class UpdateUserViewModel
+    {
+        [Required]
+        [MinLength(3, ErrorMessage = "The Username must have more 3 words")]
+        public required string Username { get; set; }
+        [Required]
+        [MinLength(6, ErrorMessage = "The Password must have more 3 words")]
+        public required string Password { get; set; }
+        public required RoleEnum Role { get; set; }
+
+        public User UpdateUser(User user)
+        {
+            user.Username = Username;
+            user.Password = Password;
+            user.Role = Role;
+            return user;
+        }
+    }
+}
