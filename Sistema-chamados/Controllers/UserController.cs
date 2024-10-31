@@ -36,7 +36,7 @@ namespace Sistema_chamados.Controllers
             return Ok(await _repository.GetAllAsync());
         }
 
-        [HttpGet("userId:int")]
+        [HttpGet("{userId:int}")]
         public async Task<ActionResult<User>> GetById(int userId)
         {
             if (userId <= 0)
@@ -47,7 +47,7 @@ namespace Sistema_chamados.Controllers
             return Ok(await _repository.GetByIdAsync(userId));
         }
 
-        [HttpDelete("userId:int")]
+        [HttpDelete("{userId:int}")]
         public async Task<IActionResult> Delete(int userId)
         {
             if (userId <= 0)
@@ -60,7 +60,7 @@ namespace Sistema_chamados.Controllers
             return NoContent();
         }
 
-        [HttpPut("userId:int")]
+        [HttpPut("{userId:int}")]
         public async Task<ActionResult<User>> Update(int userId, UpdateUserViewModel request)
         {
             if (request is null)

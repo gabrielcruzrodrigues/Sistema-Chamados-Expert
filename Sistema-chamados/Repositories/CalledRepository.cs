@@ -80,5 +80,21 @@ namespace Sistema_chamados.Repositories
                 throw new HttpResponseException(400, "Un error occured when tryning update a called!");
             }
         }
+
+        public async Task<IEnumerable<Called>> GetByUserIdAsync(int userId)
+        {
+            return await _context.Calleds
+                .AsNoTracking()
+                .Where(c => c.UserId.Equals(userId))
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Called>> GetBySectorIdAsync(int sectorId)
+        {
+            return await _context.Calleds
+                .AsNoTracking()
+                .Where(c => c.SectorId.Equals(sectorId))
+                .ToListAsync();
+        }
     }
 }

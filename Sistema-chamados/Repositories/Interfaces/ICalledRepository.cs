@@ -9,5 +9,8 @@ namespace Sistema_chamados.Repositories.Interfaces
         Task<Called> GetByIdAsync(int called);
         Task UpdateAsync(Called called);
         Task DeleteAsync(Called called);
+        Task<IEnumerable<Called>> GetByUserIdAsync(int userId);
+        Task<IEnumerable<Called>> GetBySectorIdAsync(int sectorId);
+    }
     }
 }
