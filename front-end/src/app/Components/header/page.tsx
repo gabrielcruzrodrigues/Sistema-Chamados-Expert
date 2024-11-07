@@ -1,16 +1,20 @@
 import * as React from "react";
-// import Image from "next/image";
+import Image from "next/image";
 import styles from "./header.module.sass";
+import SideBar from "../sidebar/page";
+import logo from "../../../../public/logo-text.png";
 const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        {/* Aqui colocar a logo do Expert */}
-        {/* <Image/> */}
+        <Image src={logo} alt="logo-expt" />
       </div>
       <div className={styles.navigate}>
         <button className={styles.btn}>Meus chamados</button>
         <button className={styles.btn}>Novo chamado</button>
+      </div>
+      <div className={styles.sidebar}>
+        <SideBar />
       </div>
     </header>
   );

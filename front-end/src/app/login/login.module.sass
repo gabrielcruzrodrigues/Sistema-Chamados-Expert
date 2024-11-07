@@ -1,0 +1,76 @@
+@use '../global.module.sass' as global
+.container
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  margin: 0 auto
+  width: 100%
+  height: 100vh
+  background-color: global.$bg
+  border-radius: 20px
+  font-family: global.$font-family
+
+.logo
+  margin-bottom: 20px
+
+.formContainer
+  display: flex
+  align-items: center
+  justify-content: space-around
+  flex-direction: column
+  background-color: global.$cardContainer
+  width: 533px
+  height: 691px
+  border: none
+  border-radius: 20px
+  box-shadow: 0 4px 4px global.$shadow
+  padding: 20px
+
+.formData
+  display: flex
+  flex-direction: column
+  width: 100%
+  font-size: 22px
+  color: global.$font-color
+
+.formLabel
+  padding: 2px
+
+.formInput
+  border: none
+  border-radius: 10px
+  width: 501px
+  height: 49px
+  box-shadow: 0 2px 2px global.$shadow
+  padding: 2px
+  font-family: global.$font-family
+  font-size: 20px
+  color: global.$font-color
+  &::placeholder
+    font-style: italic
+    font-size: 16px
+    font-family: global.$font-family
+    padding: 1px
+    text-align: center
+  &:focus
+    outline: none
+
+.formActions
+  display: flex
+  align-items: center
+  justify-content: space-around
+  gap: 1.5em
+  width: 100%
+
+.formBtn
+  border: none
+  border-radius: 15px
+  background-color: global.$btn-color
+  width: 253px
+  height: 49px
+  color: global.$cardContainer
+  font-weight: bold
+  font-size: 22px
+  font-family: global.$font-family
+  font-display: swap
