@@ -7,21 +7,23 @@ namespace Sistema_chamados.ViewModels
     {
         [Required]
         [MinLength(3, ErrorMessage = "The Username must have more 3 words")]
-        public required string Name { get; set; }
+        public required string Title { get; set; }
+
         [Required]
-        public DateTime Date { get; set; }
+        [MinLength(3, ErrorMessage = "The Content is required")]
+        public required string Content { get; set; }
+     
         [Required]
         public int UserId { get; set; }
         [Required]
         public int SectorId { get; set; }
-        [Required]
-        public bool Resolved { get; set; }
 
         public Called createCalled()
         {
             return new Called
             {
-                Name = Name,
+                Title = Title,
+                Content = Content,
                 CreatedAt = DateTime.UtcNow,
                 UserId = UserId,
                 SectorId = SectorId,

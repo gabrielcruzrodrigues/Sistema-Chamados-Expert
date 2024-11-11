@@ -50,6 +50,8 @@ namespace Sistema_chamados.Repositories
         {
             return await _context.Calleds
                 .AsNoTracking()
+                .Include(c => c.User)
+                .Include(c => c.Sector)
                 .ToListAsync();
         }
 

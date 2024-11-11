@@ -1,0 +1,41 @@
+services:
+  postgres-db:
+    image: postgres:15
+    ports:
+      - "5433:5433"
+    environment:
+      - POSTGRES_DB=Sistema-chamados
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+    networks:
+      - mynetwork
+
+  # client:
+  #   build:
+  #     context: ./MyInvestClient
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "9090:9090"
+  #   volumes:
+  #     - ./MyInvestClient/src/app:/app/src/app
+  #   depends_on:
+  #     - postgres-db
+  #   networks:
+  #     - mynetwork
+
+  api:
+    build:
+      context: ./Sistema-chamados
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-db
+    networks:
+      - mynetwork
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+
+networks:
+  mynetwork:
+    driver: bridge

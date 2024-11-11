@@ -7,7 +7,9 @@ namespace Sistema_chamados.Models
         public int Id { get; set; }
         [Required]
         [MinLength(3, ErrorMessage = "The Username must have more 3 words")]
-        public required string Name { get; set; }
+        public required string Title { get; set; }
+        [Required]
+        public required string Content { get; set; }
         [Required]
         public DateTime CreatedAt { get; set; }
         [Required]

@@ -12,5 +12,4 @@ namespace Sistema_chamados.Repositories.Interfaces
         Task<IEnumerable<Called>> GetByUserIdAsync(int userId);
         Task<IEnumerable<Called>> GetBySectorIdAsync(int sectorId);
     }
-    }
 }
