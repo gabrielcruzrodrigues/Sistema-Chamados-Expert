@@ -60,7 +60,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: OriginsWithAllowedAccess,
     policy =>
     {
-        policy.WithOrigins("http://localhost:4200", "http://localhost:9090")
+        policy.WithOrigins("http://localhost:3000", "http://localhost:9090")
             .AllowAnyHeader()
             .WithMethods("*");
     })
@@ -79,7 +79,7 @@ app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "aplicatalogo v1");
-    c.RoutePrefix = "swagger"; // Define o prefixo de rota (você pode deixar vazio para raiz)
+    c.RoutePrefix = "swagger"; // Define o prefixo de rota (vocï¿½ pode deixar vazio para raiz)
 });
 
 if (app.Environment.IsProduction())
