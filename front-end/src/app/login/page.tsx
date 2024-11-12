@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import logo from "../../../public/logo-text.png";
 import styles from "./login.module.sass";
+import Button from "../Components/button/button";
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -36,8 +37,8 @@ const Login = () => {
           />
         </div>
         <div className={styles.formActions}>
-          <button className={styles.formBtn}>Entrar</button>
-          <button className={styles.formBtn}> Esqueci a senha</button>
+          <Button label="Entrar" disabled={false} />
+          <Button label="Esqueci a senha" disabled={true} />
         </div>
       </form>
     </div>
