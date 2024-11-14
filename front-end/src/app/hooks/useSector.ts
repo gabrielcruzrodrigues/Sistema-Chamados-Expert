@@ -4,6 +4,8 @@ import { sectorDTO } from "../interfaces/sectorDTO";
 
 export default function useSector() {
   const api = process.env.NEXT_PUBLIC_API;
+  console.log("🚀 ~ useSector ~ api:", api);
+
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 

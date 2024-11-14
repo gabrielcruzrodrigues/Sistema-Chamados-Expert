@@ -20,3 +20,72 @@
 
 .formData
   width: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+
+.formInput
+  background-color: global.$alt-btn-color
+  border: none
+  border-radius: 15px
+  width: 1179px
+  gap: 1.5rem
+  margin-top: 20px
+  font-family: global.$font-familly
+  font-size: 22px
+  color: global.$font-color
+  &::placeholder
+    font-family: global.$font-familly
+    font-size: 18px
+    color: global.$font-color
+  &:focus
+    outline: none
+
+.formInputTitle
+  height: 79px
+
+.formDescription
+  display: grid
+  grid-template-columns: auto 1fr
+  grid-template-areas: "label input"
+
+.formInputDescription
+  height: 442px
+  grid-area: input
+
+.formLabel
+  grid-area: label
+  font-family: global.$font-familly
+  font-size: 18px
+  color: global.$font-color
+
+.formDescription
+  display: flex
+  flex-direction: column
+  align-content: flex-start
+  margin: 10px
+
+.dropdownContainer
+  display: flex
+  flex-direction: row
+  align-items: center
+
+.dropdown
+  background-color: global.$alt-btn-color
+  width: 289px
+  height: 57px
+  border: none
+  border-radius: 20px
+  font-family: global.$font-familly
+  font-size: 18px
+  color: global.$font-color
+  margin-right: 40px
+  text-align: center
+
+.dropdownMenu
+  background-color: global.$alt-btn-color
+
+.btnGroup
+  display: flex
+  flex-direction: row
+  align-items: center

@@ -8,6 +8,8 @@ import { callDTO } from "../interfaces/callDTO";
 import usePostMessage from "../hooks/usePostMessage";
 import Button from "../Components/button/button";
 import useSector from "../hooks/useSector";
+import classNames from "classnames";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 const NewCall = () => {
   const [messageContent, setMessageContent] = useState<string>("");
@@ -18,8 +20,6 @@ const NewCall = () => {
   const { getSector, getAllSectors } = useSector();
   const [sectorName, setSectorName] = useState<string>("");
   const [isDropdown, setIsDropdown] = useState<boolean>(false);
-
-  const api = process.env.NEXT_PUBLIC_API;
 
   const handleMessage = (newMessage: string) => {
     setMessageContent(newMessage);
@@ -36,27 +36,12 @@ const NewCall = () => {
     setIsDropdown(true);
   };
 
-  const teste = () => {
-    const fetchSectors = async () => {
-      const sectorsData = await getAllSectors();
-      setSectors(sectorsData || []);
-    };
+  const getSectors = async () => {
+    const data = await getAllSectors();
+    console.log("🚀 ~ getSectors ~ data:", data);
 
-    if (sectorId) {
-      const handleFindSector = async () => {
-        try {
-          const sectorName = await getSector(sectorId);
-          return sectorName;
-        } catch (err) {
-          console.error(err);
-        }
-      };
-      handleFindSector();
-    }
-    fetchSectors();
+    setSectors(data || []);
   };
-
-  useEffect(() => {});
 
   const handleSubmit = async () => {
     const message: callDTO = {
@@ -83,24 +68,47 @@ const NewCall = () => {
           <div className={styles.formData}>
             <input
               type="text"
-              placeholder="titulo do chamado"
-              className={styles.formInput}
-              // onChange={setMessageTitle}
+              placeholder="Título do chamado"
+              className={classNames(styles.formInput, styles.formInputTitle)}
+              onChange={() => setMessageTitle}
             />
           </div>
-          <MessageCreator onChange={handleMessage} />
-          <button className={styles.dropdown} onClick={dropdownToggle}></button>
-          {isDropdown && (
-            <div className={styles.dropdownMenu}>
-              {sectors.map((sector, index) => (
-                <button key={index} onClick={teste}>
-                  {sector}
-                </button>
-              ))}
+          <div className={classNames(styles.formData, styles.formDescription)}>
+            {/* <label htmlFor="description" className={styles.formLabel}>
+              Descreva o problema
+            </label> */}
+            <input
+              type="text"
+              className={classNames(
+                styles.formInput,
+                styles.formInputDescription
+              )}
+              placeholder="Descreva o problema de maneira simples e direta"
+            />
+          </div>
+          <div className={styles.btnGroup}>
+            <div className={styles.dropdownContainer}>
+              <button className={styles.dropdown} onClick={dropdownToggle}>
+                Selecione o setor
+                <ArrowDropDownIcon
+                  style={{
+                    color: "#EB8104",
+                    fontSize: 24,
+                    textAlign: "center",
+                  }}
+                />
+              </button>
+              {isDropdown && (
+                <div className={styles.dropdownMenu}>
+                  {sectors.map((sector, index) => (
+                    <button key={index} className={styles.dropdownItem}>
+                      {sector}
+                    </button>
+                  ))}
+                </div>
+              )}
+              <Button label="Enviar" onClick={handleSubmit} />
             </div>
-          )}
-          <div>
-            <Button label="Enviar" onClick={handleSubmit} />
           </div>
         </form>
       </div>

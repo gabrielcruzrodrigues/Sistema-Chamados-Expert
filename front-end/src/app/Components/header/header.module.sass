@@ -1,2 +1,27 @@
+@use '../../global.module.sass' as global
+
 .header
   display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: flex-start
+  width: 100vw
+  height: 100px
+  background-color: global.$bg
+  font-size: 18px
+
+.logo
+  margin-left: 10px
+  height: 175px
+  width: 40px
+
+.navigate
+  font-family: global.$font-familly
+
+.btn
+  background-color: global.$bg
+  border: none
+  font-family: global.$font-familly
+  font-size: 18px
+  color: global.$font-color
+  gap: 3em
