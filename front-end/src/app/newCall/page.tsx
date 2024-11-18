@@ -43,6 +43,10 @@ const NewCall = () => {
     setSectors(data || []);
   };
 
+  useEffect(() => {
+    getSectors();
+  }, []);
+
   const handleSubmit = async () => {
     const message: callDTO = {
       title: messageTitle,
@@ -62,7 +66,6 @@ const NewCall = () => {
   };
   return (
     <>
-      <Header />
       <div className={styles.container}>
         <form className={styles.formContainer}>
           <div className={styles.formData}>

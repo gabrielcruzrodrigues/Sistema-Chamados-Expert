@@ -2,26 +2,49 @@
 
 .header
   display: flex
-  flex-direction: row
-  justify-content: space-between
-  align-items: flex-start
-  width: 100vw
-  height: 100px
+  justify-content: space-between // Espaçamento entre o logo, navegação e sidebar
+  align-items: center // Alinhamento vertical ao centro
+  width: 100vw // Ocupa 100% da largura da tela
+  height: 100px // Altura fixa do header
   background-color: global.$bg
-  font-size: 18px
+  box-sizing: border-box // Inclui padding no cálculo do tamanho
+  padding: 0 20px // Espaçamento interno para os lados
 
 .logo
-  margin-left: 10px
-  height: 175px
-  width: 40px
+  display: flex
+  align-items: center // Centraliza verticalmente
+  height: 100%
+  width: auto
 
 .navigate
-  font-family: global.$font-familly
+  display: flex
+  align-items: center // Centraliza verticalmente
+  justify-content: center // Centraliza os links horizontalmente
+  gap: 20px // Espaçamento entre os links
 
-.btn
-  background-color: global.$bg
-  border: none
+.navList
+  list-style: none // Remove o marcador de lista
+  display: flex
+  align-items: center // Centraliza verticalmente
+  margin: 0
+  padding: 0
+  gap: 15px
+
+.link
+  text-decoration: none
+  color: global.$font-color
+  padding: 10px 15px // Espaçamento interno dos links
+  border-radius: 8px
+  background-color: transparent
+  transition: background-color 0.3s
   font-family: global.$font-familly
   font-size: 18px
   color: global.$font-color
-  gap: 3em
+  &:hover
+    background-color: global.$btn-color // Muda a cor ao passar o mouse
+
+.sidebar
+  display: flex
+  align-items: center
+  justify-content: flex-end // Alinha no canto direito
+  position: relative // Mantém dentro do fluxo normal

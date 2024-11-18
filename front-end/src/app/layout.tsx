@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./global.module.sass";
 import { Poppins } from "next/font/google";
-// import Header from "./Components/header/page";
-import NewCall from "./newCall/page";
+import Header from "./Components/header/page";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: "400",
@@ -20,10 +19,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="html">
-      <head></head>
-      <NewCall />
-      <body className={`${poppins}`}>{children}</body>
-    </html>
+    <>
+      <html lang="en" className="html">
+        <body className={`${poppins}`}>
+          <Header />
+
+          {children}
+        </body>
+      </html>
+    </>
   );
 }

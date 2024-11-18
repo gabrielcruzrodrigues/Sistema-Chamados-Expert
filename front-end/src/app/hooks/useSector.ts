@@ -3,8 +3,8 @@ import { useState } from "react";
 import { sectorDTO } from "../interfaces/sectorDTO";
 
 export default function useSector() {
-  const api = process.env.NEXT_PUBLIC_API;
-  console.log("🚀 ~ useSector ~ api:", api);
+  const api = "http://localhost:8080/Sector";
+  // console.log("🚀 ~ useSector ~ api:", api);
 
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
@@ -13,14 +13,16 @@ export default function useSector() {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.get(`${api}/Sector`);
+      const res = await axios.get("http://localhost:8080/Sector");
       if (res.status == 200) {
         return res.data.map((sector: sectorDTO) => sector.name);
       }
     } catch (err) {
       setError(err as Error);
       console.error(err);
-      return [];
+      return null;
+    } finally {
+      setLoading(true);
     }
   };
 

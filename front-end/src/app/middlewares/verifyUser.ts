@@ -8,11 +8,11 @@ export function verifyUser(req: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    "/newCall",
-    "/myCalls",
-    "/dashboardCalls/:path*",
-    "/resolvedCalls",
-    "/callCreated",
-  ],
+  // matcher: [
+  //   "/newCall",
+  //   "/myCalls",
+  //   "/dashboardCalls/:path*",
+  //   "/resolvedCalls",
+  //   "/callCreated",
+  // ],
 };
