@@ -62,7 +62,7 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins("http://localhost:3000", "http://localhost:9090")
             .AllowAnyHeader()
-            .WithMethods("*");
+            .AllowAnyMethod();
     })
 );
 
@@ -86,6 +86,8 @@ if (app.Environment.IsProduction())
 {
     app.ActiveUpdateDatabaseMigrations();
 }
+
+app.UseCors(OriginsWithAllowedAccess);
 
 app.UseHttpsRedirection();
 
