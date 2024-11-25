@@ -3,24 +3,22 @@ import { useState } from "react";
 import { sectorDTO } from "../interfaces/sectorDTO";
 
 export default function useSector() {
-  const api = "http://localhost:8080/Sector";
-  // console.log("🚀 ~ useSector ~ api:", api);
+  const api = "http://localhost:8080";
 
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
-  const getAllSectors = async (): Promise<string[] | undefined | null> => {
+  const getAllSectors = async (): Promise<sectorDTO[] | undefined> => {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.get("http://localhost:8080/Sector");
+      const res = await axios.get(`${api}/Sector`);
       if (res.status == 200) {
-        return res.data.map((sector: sectorDTO) => sector.name);
+        return res.data.map((sector: sectorDTO) => sector);
       }
     } catch (err) {
       setError(err as Error);
-      console.error(err);
-      return null;
+      return undefined;
     } finally {
       setLoading(true);
     }
