@@ -7,6 +7,7 @@ interface ButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement>;
   children?: ReactNode;
   disabled?: boolean;
+  type: "submit" | "reset" | "button" | undefined;
 }
 
 const Button = ({
@@ -14,9 +15,14 @@ const Button = ({
   onClick,
   disabled = false,
   children,
+  type,
 }: ButtonProps) => {
   return (
-    <button className={styles.btn} onClick={onClick} disabled={disabled}>
+    <button
+      type={type}
+      className={styles.btn}
+      onClick={onClick}
+      disabled={disabled}>
       {children}
       {label}
     </button>

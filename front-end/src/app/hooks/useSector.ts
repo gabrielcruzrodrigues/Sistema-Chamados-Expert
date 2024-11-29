@@ -14,6 +14,7 @@ export default function useSector() {
     try {
       const res = await axios.get(`${api}/Sector`);
       if (res.status == 200) {
+        console.log(res.data.map((sector: sectorDTO) => sector));
         return res.data.map((sector: sectorDTO) => sector);
       }
     } catch (err) {
@@ -24,7 +25,7 @@ export default function useSector() {
     }
   };
 
-  const getSector = async (id: number): Promise<string | undefined> => {
+  const getSector = async (id: number): Promise<sectorDTO | undefined> => {
     setLoading(true);
     setError(null);
     try {

@@ -8,9 +8,9 @@ import Button from "../Components/button/button";
 import useSector from "../hooks/useSector";
 import classNames from "classnames";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { useRouter } from "next/router";
 import SucessOnPost from "./sucessOnPost";
 import { sectorDTO } from "../interfaces/sectorDTO";
+import { MenuItem, Select } from "@mui/material";
 
 const NewCall = () => {
   const [messageContent, setMessageContent] = useState<string>("");
@@ -19,43 +19,29 @@ const NewCall = () => {
   const [sectors, setSectors] = useState<sectorDTO[]>([]);
   const [sectorId, setSectorId] = useState<number | null>(0);
   const { getSector, getAllSectors } = useSector();
-  const [isDropdown, setIsDropdown] = useState<boolean>(false);
-  const [sectorsNames, setSectorsNames] = useState<string[]>([]);
 
   const handleMessage = (newMessage: string) => {
     setMessageContent(newMessage);
     console.log(`Está e a mensagem digitada: ${newMessage}`);
   };
 
-  const handleSectorSelect = (sectorId: number) => {
-    console.log(`Setor selecionado: ${sectorId}`);
-    setSectorId(sectorId);
-    setIsDropdown(false);
-  };
-
-  const dropdownToggle = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    setIsDropdown((prev) => !prev);
+  const handleSelectSector = async (sector: sectorDTO) => {
+    setSectorId(sector.id);
+    console.log("🚀 ~ handleSelectSector ~ sector.id:", sector.id);
   };
 
   const getSectors = async () => {
     const data = await getAllSectors();
-    console.log("🚀 ~ getSectors ~ data:", data);
     if (data) {
-      const sectorsNames = data.map((sector) => sector.name);
-      console.log("🚀 ~ getSectors ~ sectorsNames:", sectorsNames);
-
-      setSectorsNames(sectorsNames);
+      console.log("🚀 ~ getSectors ~ dados recebidos pelo hook:", data);
+      const sectors = setSectors(data);
+      console.log(sectors);
     }
   };
 
   useEffect(() => {
     getSectors();
   }, []);
-
-  console.log(
-    `Este é o tanto de setores que temos armazenados ${sectors.length}`
-  );
 
   const handleSubmit = async () => {
     try {
@@ -100,35 +86,21 @@ const NewCall = () => {
               />
             </div>
             <div className={styles.btnGroup}>
-              <div className={styles.dropdownContainer}>
-                <button className={styles.dropdown} onClick={dropdownToggle}>
-                  {sectorId
-                    ? sectors.find((sector) => sector.id === sectorId)?.name ||
-                      "Setor não selecionado"
-                    : "Selecione o setor"}
-                  <ArrowDropDownIcon
-                    style={{
-                      color: "#EB8104",
-                      fontSize: 24,
-                      textAlign: "center",
-                    }}
-                  />
-                </button>
-                {isDropdown && (
-                  <div className={styles.dropdownMenu}>
-                    {sectorsNames.length === 0 ? (
-                      <span className={styles.noData}>
-                        Nenhum setor encontrado
-                      </span>
-                    ) : (
-                      sectorsNames.map((sector, index) => (
-                        <button key={index}>{sector}</button>
-                      ))
-                    )}
-                  </div>
-                )}
-              </div>
-              <Button label="Enviar" onClick={handleSubmit} />
+              {sectors.length > 0 ? (
+                <Select
+                  className={styles.dropdown}
+                  labelId="dropdown-toggle"
+                  id="toggle"
+                  label="Selecione o seu setor"
+                  value={sectors.map((sector) => sector.name)}>
+                  {sectors.map((sector, index) => (
+                    <MenuItem key={index}>{sector.name}</MenuItem>
+                  ))}
+                </Select>
+              ) : (
+                <span>Nenhum setor encontrado</span>
+              )}
+              <Button type={"submit"} label="Enviar" onClick={handleSubmit} />
             </div>
           </form>
         </div>
