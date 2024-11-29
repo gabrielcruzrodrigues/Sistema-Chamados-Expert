@@ -1,21 +1,19 @@
 @use '../global.module.sass' as global
 
 .container
-  width: 100vw
-  height: 100%
+  width: 100%
+  height: 60vh
   display: flex
   align-items: center
   justify-content: center
   flex-direction: column
-  background-color: global.$background
 
 .formContainer
   display: flex
   align-items: center
   flex-direction: column
-  margin-top: 20px
-  width: 1351px
-  height: 760px
+  margin-top: 10px
+  width: 60%
   background-color: global.$cardContainer
   border-radius: 20px
 
@@ -29,11 +27,11 @@
   background-color: global.$inputBg
   border: none
   border-radius: 15px
-  width: 1179px
+  width: 90%
   gap: 1.5rem
   margin-top: 20px
   font-family: global.$font-familly
-  font-size: 22px
+  font-size: 18px
   color: global.$font-color
   &::placeholder
     font-family: global.$font-familly
@@ -43,7 +41,8 @@
     outline: none
 
 .formInputTitle
-  height: 79px
+  padding: 5px 15px
+  height: 50px
 
 .formDescription
   display: grid
@@ -51,8 +50,11 @@
   grid-template-areas: "label input"
 
 .formInputDescription
-  height: 442px
+  height: 150px
+  padding: 5px 15px
   grid-area: input
+  resize: none
+  overflow: auto
 
 .formLabel
   grid-area: label
@@ -67,36 +69,22 @@
   margin: 10px
 
 .btnGroup
-  display: flex
-  flex-direction: row
+  display: block
   justify-content: space-between
   gap: 1.5em
 
-.dropdownContainer
+.sucessContainer
+  width: 100%
   display: flex
-  align-items: center
   flex-direction: column
-
-.dropdown
-  width: 180px
-  height: 54px
-  text-align: center
-  border: none
-  font-family: global.$font-familly
-  font-size: 14px
-  border-radius: 18px
-  color: global.$font-color
-  margin-top: 2px
-  &:placeholder
-    color: global.$font-color
-    font-family: global.$font-familly
-    font-size: 14px
-
-.dropdownMenu
-  display: flex
-  align-items: center
   justify-content: center
-  flex-direction: column
+  align-items: center
 
-.dropdownOption
-  gap: 1px
+.btnRedirectToHome
+  padding: 15px
+  margin-top: 10px
+  border-radius: 15px
+  border: 1px solid #ccc
+  background-color: global.$cardContainer
+  text-decoration: none
+  cursor: pointer

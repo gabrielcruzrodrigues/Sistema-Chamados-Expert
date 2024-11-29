@@ -13,21 +13,21 @@ const Header = () => {
       </div>
       <nav className={styles.navigate}>
         <ul className={styles.navList}>
-          <li>
+          {/* <li>
             <Link href="/newCall" className={styles.link}>
               Novo Chamado
             </Link>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <Link href="/myCalls" className={styles.link}>
               Meus Chamados
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
-      <div className={styles.sidebar}>
+      {/* <div className={styles.sidebar}>
         <SideBar />
-      </div>
+      </div> */}
     </header>
   );
 };
