@@ -11,17 +11,17 @@ const Sidebar: React.FC = () => {
 
   const links = [
     { href: '/admin/dashboard', label: 'Home', icon: <FaHome /> },
-    { href: '/analytics', label: 'Analytics', icon: <FaChartBar /> },
-    { href: '/users', label: 'Users', icon: <FaUserAlt /> },
-    { href: '/resolveds', label: 'Resolveds', icon: <FaTasks /> },
-    { href: '/settings', label: 'Settings', icon: <FaCog /> },
-    { href: '/about', label: 'About', icon: <FaInfo /> },
+    { href: '/analytics', label: 'Análises', icon: <FaChartBar /> },
+    { href: '/users', label: 'Usuários', icon: <FaUserAlt /> },
+    { href: '/resolveds', label: 'Resolvidos', icon: <FaTasks /> },
+    { href: '/settings', label: 'Configurações', icon: <FaCog /> },
+    { href: '/about', label: 'Sobre', icon: <FaInfo /> },
     { href: '/feedback', label: 'Feedback', icon: <FaQuestionCircle /> },
   ];
 
   return (
     <div className={styles.sidebar}>
-      <h2 className={styles.logo}>Sistema chamados - Expert</h2>
+      <h2 className={styles.logo}>Sistema chamados</h2>
       <nav className={styles.nav}>
         {links.map((link) => (
           <Link
