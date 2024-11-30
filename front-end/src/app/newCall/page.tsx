@@ -7,11 +7,11 @@ import usePostMessage from "../hooks/usePostMessage";
 import Button from "../Components/button/button";
 import useSector from "../hooks/useSector";
 import classNames from "classnames";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SucessOnPost from "./sucessOnPost";
 import { sectorDTO } from "../interfaces/sectorDTO";
 import { Autocomplete, MenuItem, Select, TextField } from "@mui/material";
 import { useSnackbar } from "notistack";
+import Header from "../Components/header/page";
 
 const NewCall = () => {
   const [messageContent, setMessageContent] = useState<string>("");
@@ -81,6 +81,7 @@ const NewCall = () => {
   } else {
     return (
       <>
+        <Header />
         <div className={styles.container}>
           <form className={styles.formContainer} onSubmit={handleSubmit}>
             <div className={styles.formData}>

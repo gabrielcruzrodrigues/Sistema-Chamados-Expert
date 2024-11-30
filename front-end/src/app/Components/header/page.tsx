@@ -1,9 +1,7 @@
 import * as React from "react";
 import Image from "next/image";
 import styles from "./header.module.sass";
-import SideBar from "../sidebar/page";
 import logo from "../../../../public/logo-text.png";
-import Link from "next/link";
 
 const Header = () => {
   return (

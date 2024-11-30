@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./global.module.sass";
 import { Poppins } from "next/font/google";
-import Header from "./Components/header/page";
 import Providers from "./Providers";
 
 const poppins = Poppins({
@@ -25,7 +24,6 @@ export default function RootLayout({
       <body className={`${poppins}`}>
 
         <Providers> {/* Envolve o conteúdo com o Providers */}
-          <Header />
           {children}
         </Providers>
       </body>
